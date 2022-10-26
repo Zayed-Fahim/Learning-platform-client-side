@@ -2,7 +2,8 @@ import React from 'react';
 import img1 from '../../assets/register/img-1.svg';
 import img2 from '../../assets/register/img-2.svg';
 import img3 from '../../assets/register/img-3.svg';
-import img4 from '../../assets/register/register-img.png'
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
+
 const Register = () => {
     return (
         <div>
@@ -12,14 +13,7 @@ const Register = () => {
                 <img className='w-[174px] h-[105px] relative top-8 left-40 animate-pulse' src={img2} alt="" />
                 <img className='relative bottom-36 left-16 animate-pulse' src={img3} alt="" />
             </div>
-            <div className='flex justify-center gap-4'>
-                <div className='mt-[200px]'>
-                    <img src={img4} alt="" />
-                </div>
-                <div className='mt-[200px]'>
-                    <p className='text-4xl'>Create account here</p>
-                </div>
-            </div>
+            <RegistrationForm></RegistrationForm>
         </div>
     );
 };

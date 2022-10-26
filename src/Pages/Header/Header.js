@@ -13,7 +13,7 @@ const Header = () => {
             <div className='flex mr-[60px]'>
                 <Link to='/' className="normal-case text-xl pr-6 mt-2 font-semibold hover:text-[#098b99]">Home</Link>
                 <Link to='/courses' className="normal-case text-xl pr-6 mt-2 font-semibold hover:text-[#098b99]">Courses</Link>
-                <Link to='/login' className="btn normal-case text-xl pr-6 font-semibold mr-4 bg-gradient-to-r from-[#6cc17e] to-[#098b99] hover:to-yellow-500 border-none">Log in</Link>
+                <Link to='/login' className="btn normal-case text-xl pr-6 font-semibold mr-4 bg-gradient-to-r from-[#6cc17e] to-[#098b99] hover:to-yellow-500 border-none focus:bg-teal-800">Log in</Link>
                 <Link to='/register' className="btn normal-case text-xl pr-6 font-semibold bg-gradient-to-r from-[#6cc17e] to-[#098b99] hover:to-yellow-500 border-none">Register</Link>
             </div>
         </div>
