@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import img4 from "../../assets/register/register-img.png";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
+import { AuthContext } from '../Contexts/UserContext';
+import { useContext } from 'react';
 
 const RegistrationForm = () => {
+    const { createUser, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -12,8 +15,33 @@ const RegistrationForm = () => {
         const lName = form.lname.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(fName,lName,email,password)
-
+        console.log(fName, lName, email, password);
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+            console.error(error)
+            })
+        form.reset()
+    }
+    const googleSignIn = () => {
+        handleGoogleSignIn()
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+    }
+    const gitHubSignIn = () => {
+        handleGithubSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+            console.error(error)
+        })
     }
     return (
     <div>
@@ -22,7 +50,7 @@ const RegistrationForm = () => {
                 <img src={img4} alt="" />
             </div>
             <div className='mt-[100px]'>
-                <p className='text-4xl font-bold'>Create your account</p>
+                <p className='text-4xl font-bold'>Create your account here</p>
             <div className="relative flex flex-col justify-center overflow-hidden">
             <div className="w-full p-6 m-auto bg-white rounded-md lg:max-w-xl">
             <form className="mt-6" onSubmit={handleSubmit}>
@@ -72,18 +100,21 @@ const RegistrationForm = () => {
                     <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none bg-gradient-to-r from-[#6cc17e] to-[#098b99]">
                         Register Now
                     </button>
-                        <p className='text-center m-2'>OR</p>
+                        
+                </div>
+                            </form>
+                            <div>
+                                <p className='text-center m-2'>OR</p>
                     <button className="flex items-center justify-center gap-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none bg-gradient-to-r from-[#6cc17e] to-[#098b99]">
-                                        <FcGoogle></FcGoogle>
-                        <span>Google</span>
+                        <FcGoogle></FcGoogle>
+                        <span onClick={googleSignIn}>Google</span>
                     </button>
                         <p className='text-center m-2'>OR</p>
                         <button className="flex items-center justify-center gap-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none bg-gradient-to-r from-[#6cc17e] to-[#098b99]">
                         <BsGithub></BsGithub>
-                        <span>Github</span>
+                        <span onClick={gitHubSignIn}>Github</span>
                     </button>
-                </div>
-            </form>
+                            </div>
             <p className="mt-8 text-xs font-light text-center text-gray-700">
                 {" "}
                 Already have an account?{" "}

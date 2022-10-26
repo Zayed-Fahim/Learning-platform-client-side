@@ -3,21 +3,44 @@ import { Link } from 'react-router-dom';
 import img4 from "../../assets/register/register-img.png";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
+import { useContext } from 'react';
+import { AuthContext } from '../Contexts/UserContext';
 const LoginForm = () => {
+    const {signIn,handleGoogleSignIn,handleGithubSignIn}= useContext(AuthContext)
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password)
+        console.log(email, password)
+        signIn(email, password)
+            .then(() => { })
+            .catch(error => console.error(error))
+        form.reset()
     }
+    const googleSignIn = () => {
+      handleGoogleSignIn().then((result) => {
+        const user = result.user;
+        console.log(user);
+      });
+    };
+    const gitHubSignIn = () => {
+      handleGithubSignIn()
+        .then((result) => {
+          const user = result.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
     return (
     <div>
     <div className="flex justify-center gap-4">
-        <div className="mt-[200px]">
+        <div className="mt-[100px]">
         <img src={img4} alt="" />
         </div>
-        <div className="mt-[200px]">
+        <div className="mt-[100px]">
         <p className="text-4xl font-bold mb-4">
             Sign in to Active <span className='text-accent'>Learning</span>
         </p>
@@ -54,18 +77,20 @@ const LoginForm = () => {
                 <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none bg-gradient-to-r from-[#6cc17e] to-[#098b99]">
                     Login Now
                 </button>
-                <p className="text-center m-2">OR</p>
+                </div>
+                            </form>
+                            <div>
+                                <p className="text-center m-2">OR</p>
                 <button className="flex items-center justify-center gap-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none bg-gradient-to-r from-[#6cc17e] to-[#098b99]">
                     <FcGoogle></FcGoogle>
-                    <span>Google</span>
+                    <span onClick={googleSignIn}>Google</span>
                 </button>
                 <p className="text-center m-2">OR</p>
                 <button className="flex items-center justify-center gap-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none bg-gradient-to-r from-[#6cc17e] to-[#098b99]">
                     <BsGithub></BsGithub>
-                    <span>Github</span>
+                    <span onClick={gitHubSignIn}>Github</span>
                 </button>
-                </div>
-            </form>
+                            </div>
             <p className="mt-8 text-xs font-light text-center text-gray-700">
                 {" "}
                 New user?{" "}
