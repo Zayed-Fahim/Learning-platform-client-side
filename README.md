@@ -1,3 +1,14 @@
+*Live site link: https://learning-platfrom-client.web.app/
+Description
+* in my project i used tailwind css
+* daisyUI
+* React hot toast
+* firebase hosting
+* vercel deploy
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
