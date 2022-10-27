@@ -20,17 +20,17 @@ const Home = () => {
     <div>
       <div className="bg-gradient-to-r from-[#8ed89e] to-[#44b1bd] mt-[25px]">
         <img
-          className="absolute left-[750px] top-[200px] animate-pulse"
+          className="absolute left-[800px] top-[200px] animate-pulse"
           src={img2}
           alt=""
         />
         <img
-          className="absolute top-[88%] left-[100px] animate-pulse"
+          className="absolute top-[86%] left-[100px] animate-pulse"
           src={img3}
           alt=""
         />
         <img
-          className="absolute left-[85%] top-[83%] animate-pulse"
+          className="absolute left-[85%] top-[80%] animate-pulse"
           src={img4}
           alt=""
         />
