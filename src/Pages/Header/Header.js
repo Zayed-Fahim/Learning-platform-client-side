@@ -15,7 +15,6 @@ const Header = () => {
             .then(() => { })
         .catch(error=>{console.error(error)})
     }
-    console.log(user)
     return (
         <div className='mt-[25px] ml-[60px] flex justify-between sticky top-0 left-0'>
             <div className='flex justify-between w-[750px]'>
