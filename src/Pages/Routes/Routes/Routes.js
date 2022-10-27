@@ -6,6 +6,8 @@ import Home from '../../Home/Home';
 import Main from '../../Layout/Main';
 import Login from '../../Login/Login';
 import Register from '../../Register/Register';
+import Route404 from '../../Route404/Route404';
+import PrivateRoute from '../PrivateRoute.js/PrivateRoute';
 
 const Routes = () => {
     const router = createBrowserRouter([
@@ -22,11 +24,11 @@ const Routes = () => {
                 },
                 {
                     path: '/courses',
-                    element:<Courses></Courses>
+                    element:<PrivateRoute><Courses></Courses></PrivateRoute>
                 },
                 {
                     path: '/blog',
-                    element:<Blog></Blog>
+                    element:<PrivateRoute><Blog></Blog></PrivateRoute>
                 },
                 {
                     path: '/login',
@@ -37,6 +39,10 @@ const Routes = () => {
                     element:<Register></Register>
                 },
             ]
+        },
+        {
+            path: '*',
+            element:<Route404></Route404>
         }
     ])
     return (
