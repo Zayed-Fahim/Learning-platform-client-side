@@ -18,7 +18,7 @@ const Routes = () => {
                 {
                     path: '/',
                     loader: () => {
-                        return fetch(" https://learning-platform-server-ecru.vercel.app/courses");
+                        return fetch("https://learning-platform-server-ecru.vercel.app/courses");
                     },
                     element:<Home></Home>
                 },

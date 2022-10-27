@@ -11,10 +11,10 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategory] = useState([])
     useEffect(() => {
-        fetch(" https://learning-platform-server-ecru.vercel.app/courses")
+        fetch("https://learning-platform-server-ecru.vercel.app/courses")
           .then((res) => res.json())
           .then((data) => setCourses(data));
-      fetch(" https://learning-platform-server-ecru.vercel.app/category")
+      fetch("https://learning-platform-server-ecru.vercel.app/category")
         .then((res) => res.json())
         .then((data) => setCategory(data));
     },[])
